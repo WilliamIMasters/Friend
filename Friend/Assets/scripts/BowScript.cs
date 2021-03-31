@@ -12,6 +12,9 @@ public class BowScript : MonoBehaviour
     public float radius = 2f;
     public float radiusSpeed = 2f;
 
+
+    public float offset;
+
     private Vector3 desiredPos;
 
     void Start()
@@ -25,12 +28,14 @@ public class BowScript : MonoBehaviour
 
         // Rotate around player
         Vector3 mousePos = Input.mousePosition;
-        Vector3 playerScreenPos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 pos = transform.position;
+        pos.y += offset;
+        Vector3 playerScreenPos = Camera.main.WorldToScreenPoint(pos);
 
         float angle = Mathf.Atan2(mousePos.y - playerScreenPos.y, mousePos.x - playerScreenPos.x) * Mathf.Rad2Deg;
         float currentAngle = bow.transform.eulerAngles.z;
 
-        bow.transform.RotateAround(transform.position, new Vector3(0, 0, 1), angle - currentAngle);
+        bow.transform.RotateAround(pos, new Vector3(0, 0, 1), angle - currentAngle);
 
 
 
