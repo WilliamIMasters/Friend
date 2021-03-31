@@ -11,6 +11,7 @@ public class projectile : MonoBehaviour
     public int damage;
 
     private Rigidbody2D rb;
+    private Animator animator;
 
     private bool toDestroy;
 
@@ -19,6 +20,7 @@ public class projectile : MonoBehaviour
     {
         toDestroy = true;
         rb = GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponentInChildren<Animator>();
         rb.AddRelativeForce(transform.right * speed * 100);
         //rb.velocity += new Vector2(transform.forward.x * speed, transform.forward.y * speed);
 
@@ -46,5 +48,7 @@ public class projectile : MonoBehaviour
         toDestroy = false;
         rb.velocity = Vector3.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
+        GetComponent<BoxCollider2D>().enabled = false;
+        animator.SetBool("Landed", true);
     }
 }
