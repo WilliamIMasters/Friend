@@ -17,14 +17,26 @@ public class variableRenderLayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sr.sortingOrder = Mathf.RoundToInt(transform.position.y * -10);
-        if(transform.childCount > 0)
-        { 
-            for(int i=0; i < transform.childCount; i++)
+        //sr.sortingOrder = Mathf.RoundToInt(transform.position.y * -10);
+        updateSortingLayer(this.gameObject);
+        
+    }
+
+    private void updateSortingLayer(GameObject myObject)
+    {
+
+        if(myObject.GetComponent<SpriteRenderer>())
+        {
+            myObject.GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * -10);
+        }
+        
+
+        if (myObject.transform.childCount > 0)
+        {
+            for (int i = 0; i < myObject.transform.childCount; i++)
             {
-                transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * -10);
+                updateSortingLayer(myObject.transform.GetChild(i).gameObject);
             }
         }
-
     }
 }
