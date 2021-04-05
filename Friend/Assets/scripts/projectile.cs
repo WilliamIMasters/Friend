@@ -51,4 +51,7 @@ public class projectile : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = false;
         animator.SetBool("Landed", true);
     }
+
+
+
 }

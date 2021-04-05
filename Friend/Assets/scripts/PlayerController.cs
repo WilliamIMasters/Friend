@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
 
+    private float xmove = 0f;
+    float ymove = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,23 +24,24 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xmove = 0f;
-        if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.1f) // move right
+        if(Input.GetKeyDown(KeyCode.Y))
         {
+            print(GetComponent<Invetory>().inventoryToString());
+        }
+
+        
             
-            xmove = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        }
-
-        float ymove = 0f;
-        if (Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.1f) // move right
-        {
-
-            ymove = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        }
+        xmove = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        ymove = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 
 
         anim.SetFloat("xMove", Input.GetAxis("Horizontal"));
         anim.SetFloat("yMove", Input.GetAxis("Vertical"));
-        rb.MovePosition(new Vector2(transform.position.x + xmove, transform.position.y + ymove));
+        //rb.MovePosition(new Vector2(transform.position.x + xmove, transform.position.y + ymove));
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(xmove, ymove);
     }
 }

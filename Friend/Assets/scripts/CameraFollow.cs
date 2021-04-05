@@ -26,9 +26,13 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        Move();
+        if(!(targets == null) && targets.Length > 0)
+        {
+            Move();
 
-        Zoom();
+            Zoom();
+        }
+        
     }
 
 

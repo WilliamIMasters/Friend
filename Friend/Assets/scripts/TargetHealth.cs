@@ -7,6 +7,8 @@ public class TargetHealth : MonoBehaviour
 
     public int healthPoints;
 
+    public GameObject deathParticleEffect;
+
     private SpriteRenderer sr;
 
     // Start is called before the first frame update
@@ -47,6 +49,13 @@ public class TargetHealth : MonoBehaviour
 
     public void die()
     {
+        if(deathParticleEffect != null)
+        {
+            GameObject effect= Instantiate(deathParticleEffect);
+            effect.transform.position = transform.position;
+
+        }
+
         Destroy(this.gameObject);
     }
 
