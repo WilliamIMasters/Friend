@@ -669,9 +669,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Tamed is a top down pixel game created for the Collage Game Jam 2021
 
-
-    Created
-    by WIlliam Masters'
+'
 --- !u!222 &1441059238
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -28,10 +28,15 @@ public class GameManager : MonoBehaviour
 
     public void OnStateChange()
     {
-        if(gameState == GameState.MAIN_MENU)
+        if (gameState == GameState.GAME)
+        {
+            SceneManager.LoadScene("Main");
+        }
+        else if (gameState == GameState.MAIN_MENU)
         {
             SceneManager.LoadScene("MainMenu");
-        } else if (gameState == GameState.INFO_PAGE)
+        }
+        else if (gameState == GameState.INFO_PAGE)
         {
             SceneManager.LoadScene("InfoPage");
         }

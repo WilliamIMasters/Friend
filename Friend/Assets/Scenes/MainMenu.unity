@@ -872,7 +872,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2016139793}
-        m_MethodName: SetStateMainMenu
+        m_MethodName: SetStateGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
